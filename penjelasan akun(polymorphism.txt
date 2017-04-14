@@ -1,0 +1,31 @@
+// Deklarasi kelas Waktu   format waktu 24 jam
+
+public class Waktu{     //   nama kelas dan konstruktornya
+	 private int jam;  // 0 - 24
+	 private int menit;  // 0 - 59
+	 private int detik;  //  0 -  59
+
+	 public void setWaktu(int h, int m, int s){       // function overloading
+
+	 	if ( (h>=0 && h < 24) &&( m >= 0 && m<60) && (s>=0 && s < 60)) {
+
+	 		jam = h;
+	 		menit = m;
+	 		detik = s;
+
+	 		
+	 	}        // akhir dari if
+	 	else
+	 		throw new IllegalArgumentException(" jam menit dan detik diluar rentang yang valid");
+	 }	   // akhir dari metode setWaktu
+	 
+	 public String toUniversalString(){    // mengkonversi String dalam format waktu universal (HH:MM:SS)
+	 	return String.format("%02d:%02d:%02d, jam, menit, detik");
+	 }         // akhir dari metode toUniversalString
+	 
+	 
+	 public String toString(){    // mengkonversi ke String dalam format waktu standard (HH:MM:SS AM atau PM)
+	 	return String.format ("%d:%02d:%02d %s",
+	 		( ( jam == 0|| jam == 12) ? 12 : jam % 12), menit, detik, ( jam < 12 ? "AM" : "PM"));
+	 }   // Akhir dari metode toString
+}	 // Akhir dari kelas waktu
